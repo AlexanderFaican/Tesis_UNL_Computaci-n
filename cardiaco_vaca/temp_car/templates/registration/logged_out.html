@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="utf-8">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif; /* Fuente para el texto */
+            }
+            header {
+                background-color: green; /* Fondo verde */
+                color: white; /* Texto en blanco */
+                padding: 10px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .logo {
+                display: flex;
+                align-items: center;
+            }
+            .logo img {
+                width: 100px; /* Tamaño del logo */
+                margin-right: 100px;
+            }
+            .menu-button {
+                display: none;
+            }
+            .menu-button-label {
+                display: none;
+            }
+            .menu-button:checked + .sidebar {
+                transform: translateX(0);
+            }
+            .sidebar {
+                width: 250px;
+                background-color: green; /* Fondo verde */
+                color: white; /* Texto en blanco */
+                position: fixed;
+                top: 0;
+                left: -250px; /* Inicialmente oculto fuera de la pantalla */
+                height: 100%;
+                overflow-y: auto;
+                transition: transform 0.3s ease;
+            }
+            .sidebar ul {
+                padding: 0;
+                list-style: none;
+            }
+            .sidebar li {
+                padding: 10px;
+            }
+            .sidebar li a {
+                color: white;
+                text-decoration: none;
+            }
+
+            /* Estilos para el menú */
+            .menu {
+            display: flex;
+            flex-direction: column;
+            width: 80px;
+            background-color: #f1f1f1;
+            padding: 8px;
+            border-radius: 23px;
+            }
+
+            .menu > a {
+            color: #0bc904;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 4px;
+            background-color: #fff;
+            }
+
+            .menu > a:hover {
+            background-color: #036400;
+            color: #fff;
+            }
+
+            /* Estilos para los submenús */
+            
+
+            /* Mostrar submenús al pasar el cursor sobre el elemento padre */
+            .menu > a:hover {
+            display: flex;
+            }
+
+            .logout-container {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin-top: 30px; /* Puedes ajustar este valor según tu diseño */
+            }
+            p {
+                align-items: center;
+                display: flex;
+                align-content: center;
+                text-align: center;
+            }
+            .contain {
+                color: #0bc904;
+                display: flex;
+                color: #f1f1f1;
+                align-items: center;
+                background-color: #bb0404;
+                text-decoration: none;
+                padding: 8px;
+                border-radius: 5px;
+                margin-bottom: 4px;
+                background-color: #fff;
+            }
+
+            .contain:hover{
+                align-items: center;
+                border-radius: 5px;
+                background-color: #036400;
+                color: #ffffff;
+                display: inline-block; /* Hace que el fondo se extienda por el tamaño del texto */
+            }
+
+        </style>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title style="text-align: center;">Panel de Monitoreo Ganado Bovino Lechero</title>
+    
+</head>
+<body>
+    <input type="checkbox" class="menu-button" id="menu-button">
+    <label class="menu-button-label" for="menu-button">&#9776;</label>
+    <header>
+        <div class="logo">
+            <img style="border-radius: 150%;" src="{% static 'assets/img/logo_sistemas.jpg' %}" alt="Logo"> <!-- Agrega la ruta de tu logo -->
+            <h1 style="text-align: center;">Panel de Monitoreo de Ganado Bovino Lechero UNL</h1>
+        </div>
+            <div class="logout-container">
+            {% if usuario_logueado %}
+                <a href="{% url 'logout' %}">
+                    <img src="{% static 'assets/img/usuarios/salir.png' %}" width="60" height="60">
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}">
+                   
+                </a>
+            {% endif %}
+            </div>
+    </header>
+
+    <p>Haz cerrado Sesión!</p>
+    <div class="contain">
+        <a href="{% url 'login'%}">Haga clic aquí para iniciar sesión de nuevo.</a>
+    </div>

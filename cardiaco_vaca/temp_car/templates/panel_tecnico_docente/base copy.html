@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Menú</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .menu {
+      height: 100vh;
+      width: 60px;
+      background-color: #ffffff; /* Color verde */
+      color: white;
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: none;
+      flex-direction: column;
+    }
+
+    .menu-header {
+      padding: 10px;
+      text-align: center;
+      color: #ffffff;
+      background-color: #016612; /* Color más oscuro para encabezado */
+      cursor: pointer; /* Agregamos esta línea para que el encabezado sea clickeable */
+    }
+
+    .menu-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .menu-list a {
+      text-decoration: none;
+      color: white;
+      padding: 10px;
+      display: block;
+      transition: background-color 0.3s;
+    }
+
+    .menu-list a:hover {
+      background-color: #a8a8a8; /* Cambia el color al pasar el ratón */
+    }
+
+    .content-container {
+      margin-left: 250px; /* Ajusta según el ancho del menú */
+      padding: 16px;
+    }
+
+    /* Estilos del botón */
+    .menu-button {
+      background-color: #ffffff;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+      display: block;
+      margin: 16px;
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("myMenu");
+      if (menu.style.display === "none" || menu.style.display === "") {
+        menu.style.display = "block";
+      } else {
+        menu.style.display = "none";
+      }
+    }
+  </script>
+</head>
+<body>
+
+<div style="text-align: center;" class="menu-header" onclick="toggleMenu()"> ☰ <img src="{% static 'assets/img/logo_sistemas.jpg' %}" width="80" height="80"><h1>Panel de Monitoreo de Ganado Bovino Lechero UNL</h1>
+</div>
+<div class="menu" id="myMenu">
+    <ul class="menu-list">
+        <li><a href="#"><img src="{% static 'assets/img/mas_recientes.png' %}" width="40" height="40"></a></li>
+        <li><a href="#"><img src="{% static 'assets/img/reportes.png' %}" width="40" height="40"></a></li>
+        <li><a href="#"><img src="{% static 'assets/img/temperatura.png' %}" width="40" height="40"></a></li>
+        <li><a href="#"><img src="{% static 'assets/img/ritmo.png' %}" width="40" height="40"></a></li>
+    </ul>
+</div>
+
+<div class="content-container">
+  <!-- Tu contenido principal irá aquí -->
+  <p>Contenido principal...</p>
+</div>
+
+</body>
+</html>
+
+
